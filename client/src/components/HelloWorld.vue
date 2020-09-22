@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import config from '../config'
 import Vue from 'vue'
 import Tracks from './Tracks.vue'
 
@@ -48,6 +49,9 @@ export default {
         }
     },
     methods: {
+        login() {
+          Vue.axios.get(`${config.services.host}/login`);
+        },
         logOut() {
             this.$store.commit('mutateUser', null);
             this.$router.push({ name: 'Home'})

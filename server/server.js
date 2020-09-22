@@ -8,9 +8,9 @@ app.use(express.static(__dirname + '/public'))
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
-const redirect_uri = 'http://localhost:8081/callback/';
+const redirect_uri = process.env.NODE_ENV;
 const server_address = 'http://localhost:8081'; // by default it should be http://localhost:8080 or 8081 by default
-const frontend_server_port = '8081'; // your Vue server port (8080 or 8081 by default)
+const frontend_server_port = process.env.PORT; // your Vue server port (8080 or 8081 by default)
 const scope = 'user-read-email, user-read-playback-state, streaming, playlist-read-collaborative, user-modify-playback-state, playlist-modify-public, playlist-modify-private, user-library-modify, user-top-read, user-read-playback-position, user-read-currently-playing, app-remote-control, user-read-recently-played,user-library-read';
 
 var corsOptions = {
