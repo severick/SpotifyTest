@@ -25,12 +25,9 @@ services:
     build:
       context: ./.docker/dev/node
     container_name: dev-node
-    environment:
-      - NODE_ENV=dev
-      - PORT=3000
     volumes:
-      - ./server:/server
-      - ./server/node_modules:/server/node_modules
+      - ./server:/app
+      - ./server/node_modules:/app/node_modules
     ports:
       - "3000:3000"
     command: "npm start"

@@ -1,6 +1,6 @@
 FROM node:12
 
-WORKDIR /server
+WORKDIR /app
 
 EXPOSE 3000
 
