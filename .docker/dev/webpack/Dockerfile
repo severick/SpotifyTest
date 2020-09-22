@@ -1,7 +1,6 @@
 FROM node:12
 
-WORKDIR /app
-ADD . /app
+# WORKDIR /app
 
 EXPOSE 3000
 
