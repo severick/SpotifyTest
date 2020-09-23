@@ -20,15 +20,16 @@ var corsOptions = {
     'optionsSuccessStatus': 200
 }
 
-app.get('/api/login', function (req, res) {
+app.get('/api/login', cors(), function (req, res) {
     // redirect to Spotify login page
-    res.writeHead(302, {
+    res.writeHead(200, {
         'Location': encodeURI(`https://accounts.spotify.com/authorize` +
             `?client_id=${client_id}` +
             `&response_type=code` +
             `&redirect_uri=${redirect_uri}` +
             `&scope=${scope}` +
-            `&show_dialog=true`)
+            `&show_dialog=true`),
+        'Access-Control-Allow-Origin': req.headers.origin || '*'
     });
     res.send();
 });
@@ -82,7 +83,7 @@ app.get('/api/callback/', function (req, res) { //change '/callback' if your red
             const access_token = body.access_token;
             const refresh_token = body.refresh_token;
             //pass the tokens to the browser as a query params to make requests from there
-            res.redirect('http://localhost:8080/?' +
+            res.redirect('http://104.248.238.158/?' +
                 querystring.stringify({
                     access_token: access_token,
                     refresh_token: refresh_token

@@ -52,7 +52,7 @@ export default {
         login() {
 		console.log(process.env.VUE_APP_BACKEND);
 		console.log(config.services.host);
-          Vue.axios.get(`${config.services.host}/login`);
+          Vue.axios.get(`${config.services.host}/login`).then(url => { window.location.href = url.headers.location; });
         },
         logOut() {
             this.$store.commit('mutateUser', null);
