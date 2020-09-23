@@ -8,19 +8,19 @@ app.use(express.static(__dirname + '/public'))
 
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
-const redirect_uri = process.env.NODE_ENV;
-const server_address = 'http://localhost:8081'; // by default it should be http://localhost:8080 or 8081 by default
+const redirect_uri = process.env.REDIRECT_URI;
+const server_address = 'http://172.21.0.3'; // by default it should be http://localhost:8080 or 8081 by default
 const frontend_server_port = process.env.PORT; // your Vue server port (8080 or 8081 by default)
 const scope = 'user-read-email, user-read-playback-state, streaming, playlist-read-collaborative, user-modify-playback-state, playlist-modify-public, playlist-modify-private, user-library-modify, user-top-read, user-read-playback-position, user-read-currently-playing, app-remote-control, user-read-recently-played,user-library-read';
 
 var corsOptions = {
-    'origin': '*',
+    'origin': 'http://104.248.238.158/',
     'methods': 'GET, HEAD, PUT, PATCH, POST, DELETE',
     'preflightContinue': false,
     'optionsSuccessStatus': 200
 }
 
-app.get('/login', function (req, res) {
+app.get('/api/login', function (req, res) {
     // redirect to Spotify login page
     res.writeHead(302, {
         'Location': encodeURI(`https://accounts.spotify.com/authorize` +
@@ -33,7 +33,7 @@ app.get('/login', function (req, res) {
     res.send();
 });
 
-app.get('/refresh', function(req, res) {
+app.get('/api/refresh', function(req, res) {
     const authOptions = {
         url: 'https://accounts.spotify.com/api/token',
         form: {
@@ -61,7 +61,7 @@ app.get('/refresh', function(req, res) {
     })    
 });
 
-app.get('/callback/', function (req, res) { //change '/callback' if your redirect_uri has different ending (without slash at the end)
+app.get('/api/callback/', function (req, res) { //change '/callback' if your redirect_uri has different ending (without slash at the end)
     // after successful login make api call to get you profile's data
     const code = req.query.code || null;
     const authOptions = {

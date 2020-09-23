@@ -50,6 +50,8 @@ export default {
     },
     methods: {
         login() {
+		console.log(process.env.VUE_APP_BACKEND);
+		console.log(config.services.host);
           Vue.axios.get(`${config.services.host}/login`);
         },
         logOut() {

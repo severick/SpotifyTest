@@ -28,6 +28,9 @@ services:
     environment:
       - NODE_ENV=test
       - PORT=8081
+      - CLIENT_ID=${CLIENT_ID}
+      - CLIENT_SECRET=${CLIENT_SECRET}
+      - REDIRECT_URI=${REDIRECT_URI}
     volumes:
       - ./server:/app
       - ./server/node_modules:/app/node_modules
