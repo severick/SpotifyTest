@@ -1,6 +1,6 @@
 version: '2'
 services:
-  dev-nginx:
+  prod-nginx:
     build:
       context: ./.docker/prod/nginx
     container_name: prod-nginx
@@ -24,7 +24,12 @@ services:
     volumes:
       - ./client:/app
       - ./client/node_modules:/app/node_modules
-    command: "npm run build"
+    stdin_open: true
+    tty: true
+    environment:
+      - port=3000
+      - NODE_ENV=production
+    command: bash -c "tail -f /dev/null"
   prod-node:
     build:
       context: ./.docker/prod/node
