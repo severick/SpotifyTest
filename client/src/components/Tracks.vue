@@ -190,11 +190,8 @@ export default {
             },
           })
         .then((response) => {
-          console.log(response.data);
           this.$store.commit("mutateTracks", response.data);
           this.$router.push({ name: "HelloWorld" });
-          console.log("state tracks are ");
-          console.log(this.$store.state.tracks);
         });
     },
     analyzeTrack(trackId) {
@@ -266,8 +263,6 @@ export default {
             this.$route.query.refresh_token
           );
           this.$router.push({ name: "HelloWorld" });
-          console.log("Response from server: ");
-          console.log(this.$store.state.user);
         });
     }
   },

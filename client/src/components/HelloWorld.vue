@@ -50,9 +50,8 @@ export default {
     },
     methods: {
         login() {
-		console.log(process.env.VUE_APP_BACKEND);
-		console.log(config.services.host);
-          Vue.axios.get(`${config.services.host}/login`).then(url => { window.location.href = url.headers.location; });
+          Vue.axios.get(`${config.services.host}/login`).then(
+            response => { window.location.href = response.data.Location; });
         },
         logOut() {
             this.$store.commit('mutateUser', null);
@@ -64,11 +63,8 @@ export default {
               'Authorization': 'Bearer ' + this.$store.state.access_token
             }
           }).then((response) => {
-            console.log(response.data)
             this.$store.commit('setTracks', response.data.items);
             this.$router.push('/topTracks')
-            console.log("state tracks are " )
-            console.log(this.$store.state.tracks)
           })
         }
     },
