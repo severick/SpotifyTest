@@ -8,6 +8,8 @@ import vuetify from './plugins/vuetify';
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css'
+import './sass/main.scss'
+import { mapActions } from 'vuex';
 
 Vue.use(VueAxios, axios, vuetify);
 

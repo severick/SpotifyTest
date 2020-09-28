@@ -9,8 +9,9 @@ app.use(express.static(__dirname + '/public'))
 const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 const redirect_uri = process.env.REDIRECT_URI;
-const server_address = process.env.SERVER_ADDRESS; // by default it should be http://localhost:8080 or 8081 by default
-const frontend_server_port = process.env.PORT; // your Vue server port (8080 or 8081 by default)
+const server_address = process.env.SERVER_ADDRESS; 
+const frontend_server_address = process.env.FRONT_ADD;
+const frontend_server_port = process.env.PORT;
 const scope = 'user-read-email, user-read-playback-state, streaming, playlist-read-collaborative, user-modify-playback-state, playlist-modify-public, playlist-modify-private, user-library-modify, user-top-read, user-read-playback-position, user-read-currently-playing, app-remote-control, user-read-recently-played,user-library-read';
 
 var corsOptions = {
@@ -70,13 +71,13 @@ app.get('/api/callback/', function (req, res) { //change '/callback' if your red
             const access_token = body.access_token;
             const refresh_token = body.refresh_token;
             //pass the tokens to the browser as a query params to make requests from there
-            res.redirect('http://104.248.238.158/?' +
+            res.redirect(frontend_server_address + '?'+
                 querystring.stringify({
                     access_token: access_token,
                     refresh_token: refresh_token
                 }));
         } else {
-            res.redirect(server_address +
+            res.redirect(frontend_server_address +
                 querystring.stringify({
                     error: 'invalid_token'
                 }));

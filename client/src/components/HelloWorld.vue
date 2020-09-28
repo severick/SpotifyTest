@@ -50,6 +50,7 @@ export default {
     },
     methods: {
         login() {
+          console.log(config.services.host)
           Vue.axios.get(`${config.services.host}/login`).then(
             response => { window.location.href = response.data.Location; });
         },
