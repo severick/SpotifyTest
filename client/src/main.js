@@ -10,6 +10,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css'
 import './sass/main.scss'
 import { mapActions } from 'vuex';
+import '@babel/polyfill'
 
 Vue.use(VueAxios, axios, vuetify);
 

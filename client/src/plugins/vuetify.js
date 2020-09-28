@@ -1,11 +1,20 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
-import '@mdi/font/css/materialdesignicons.css'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-
+import Vuetify from 'vuetify/lib/framework';
 
 Vue.use(Vuetify);
 
 export default new Vuetify({
-  theme: { dark: true}
+  customVariables: ['~/sass/variables.scss'],
+  treeShake: true,
+  theme: {
+    options: {
+      customProperties: true,
+    },
+    dark: true,
+    themes: {
+      dark: {
+        background: '#252323'
+      }
+    }
+  }
 });

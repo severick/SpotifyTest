@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-      <v-container fluid>
+      <v-container>
         <router-view></router-view>
       </v-container>
     </v-main>
@@ -10,10 +10,8 @@
 
 <script>
 import HelloWorld from './components/HelloWorld';
-
 export default {
   name: 'App',
-
   components: {
     HelloWorld,
   },
@@ -22,9 +20,17 @@ export default {
           return this.$store.getters.getUser
         },
   },
-
   data: () => ({
     //
   }),
 };
 </script>
+
+<style scoped>
+
+.theme--dark.v-application {
+  color: #1cc7ff
+}
+
+ 
+</style>

@@ -9,7 +9,6 @@
           <v-slide-group>
             <v-card
               flat
-              outlined
               tile
               v-for="value in tracks"
               :key="value.id"
@@ -283,7 +282,7 @@ a {
 }
 .track_info {
   padding: 20px 20px 15px;
-  background: #282828;
+  /* background: #1CC7FF; */
 }
 .v-image {
   opacity: 0.6;
