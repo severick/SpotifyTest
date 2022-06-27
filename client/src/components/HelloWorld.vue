@@ -50,16 +50,16 @@ export default {
     },
     methods: {
         login() {
-		console.log(process.env.VUE_APP_BACKEND);
-		console.log(config.services.host);
-          Vue.axios.get(`${config.services.host}/login`).then(url => { window.location.href = url.headers.location; });
+          Vue.axios.get(`${config.services.host}/login`).then(url => { 
+            console.log(url)
+            window.location.href = url.headers.location; });
         },
         logOut() {
             this.$store.commit('mutateUser', null);
             this.$router.push({ name: 'Home'})
         },
         topTracks() {
-          Vue.axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=5', {
+          Vue.axios.get('https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10', {
             headers: {
               'Authorization': 'Bearer ' + this.$store.state.access_token
             }

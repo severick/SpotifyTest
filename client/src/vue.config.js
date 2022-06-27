@@ -1,6 +1,9 @@
 module.exports = {
-  "devServer": {
-    "port": 8080
+  devServer: {
+    proxy: 'http://localhost:8081',
+    watchOptions: {
+      poll: true
+    }
   },
   "configureWebpack": {
     "plugins": [
@@ -9,7 +12,8 @@ module.exports = {
           "_": "lodash"
         }
       },
-    ]
+    ],
+    "devtool": 'source-map'
   },
   "transpileDependencies": [
     "vuetify"

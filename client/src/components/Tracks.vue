@@ -108,9 +108,7 @@
       </v-container>
     </template>
     <template v-else>
-      <h1>Log in to Spotify using Authorization Code flow</h1>
-      <a href="http://localhost:8081/login" class="btn btn-primary">Log in with Spotify</a>
-      <br />
+      <div></div>
     </template>
   </v-container>
 </template>
@@ -183,7 +181,7 @@ export default {
     topTracks() {
       Vue.axios
         .get(
-          "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=5",
+          "https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10",
           {
             headers: {
               Authorization: "Bearer " + this.$store.state.access_token,
